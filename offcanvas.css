@@ -1,69 +1,81 @@
  /* Since we're mobile-first, by default, the drawer is hidden. */
 
        html,
-       #hiddenNav {
-           height: 100%;
-           width: 100%;
+       body {
+         height: 100%;
+         width: 100%;
        }
 
-       a#tinyNavBar svg {
-           width: 40px;
-           fill: #000;
+       a#menu svg {
+         width: 40px;
+         /* This declares the color of the SVG */
+         fill: #000;
        }
 
-       #container,
-       #leftNavOffScreen {
-           padding: 1em;
-           box-sizing: border-box;
+       nav,
+       main {
+         padding: 1em;
+         box-sizing: border-box;
        }
 
-       #leftNavOffScreen {
-           width: 100%;
-           height: 100%;
+       main {
+         width: 100%;
+         height: 100%;
        }
- #container {
-     width: 300px;
-     height: 100%;
-     position: absolute;
-     /* This trasform moves the drawer off canvas. */
-     -webkit-transform: translate(-300px, 0);
-     transform: translate(-300px, 0);
-     /* Optionally, we animate the drawer. */
-     transition: transform 0.3s ease;
- }
 
- #container.open {
-     -webkit-transform: translate(0, 0);
-     transform: translate(0, 0);
- }
+       /*
+       * Off-canvas layout styles.
+       */
 
- /* If there is enough space (> 600px), we keep the drawer open all the time. */
+       /* Since we're mobile-first, by default, the drawer is hidden. */
 
- @media (min-width: 600px) {
-     /* We open the drawer. */
-     #container {
-         position: relative;
+       nav {
+         width: 300px;
+         height: 100%;
+         position: absolute;
+         /* This trasform moves the drawer off canvas. */
+         -webkit-transform: translate(-300px, 0);
+         transform: translate(-500px, 0);
+         /* Optionally, we animate the drawer. */
+         transition: transform 0.3s ease;
+       }
+
+       nav.open {
          -webkit-transform: translate(0, 0);
          transform: translate(0, 0);
-     }
-     /* We use Flexbox on the parent. */
-     #hiddenNav {
-         display: -webkit-flex;
-         display: flex;
-         -webkit-flex-flow: row nowrap;
-         flex-flow: row nowrap;
-     }
-     #leftNavOffScreen {
-         width: auto;
-         /* Flex-grow streches the main content to fill all available space. */
-         flex-grow: 1;
-     }
- }
+       }
 
- /* If there is space (> 800px), we keep the drawer open by default. */
+       /* If there is enough space (> 600px), we keep the drawer open all the time. */
 
- @media (min-width: 600px) {
-     #leftNavOffScreen>#menu:after {
-         content: 'The drawer stays open if width > 600px';
-     }
- }
+       @media (min-width: 600px) {
+         /* We open the drawer. */
+         nav {
+           position: relative;
+           -webkit-transform: translate(0, 0);
+           transform: translate(0, 0);
+         }
+         /* We use Flexbox on the parent. */
+         body {
+           display: -webkit-flex;
+           display: flex;
+           -webkit-flex-flow: row nowrap;
+           flex-flow: row nowrap;
+         }
+         main {
+           width: auto;
+           /* Flex-grow streches the main content to fill all available space. */
+           flex-grow: 1;
+         }
+       }
+
+       /* If there is space (> 800px), we keep the drawer open by default. */
+
+       @media (min-width: 601px) {
+         header {
+           position: relative;
+         }
+         nav {
+           position: relative;
+           top: 
+         }
+       }
